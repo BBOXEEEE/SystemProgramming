@@ -116,7 +116,7 @@ static const char *convert_filename(mode_t mode, const char *filename) {
         char *last_slash = strrchr(buf, '/');
         // === 경로와 폴더명을 분리 ===
         char *origin_filename;
-        if (!last_slash) {
+        if (last_slash != NULL) {
             *last_slash = '\0';
             origin_filename = last_slash + 1;
         }
@@ -140,7 +140,6 @@ static const char *convert_filename(mode_t mode, const char *filename) {
 // === 문자열로 된 접근 권한을 mode_t 타입으로 변환하는 함수 ===
 static mode_t parse_permission(const char* mode_token, mode_t curr_mode) {
     mode_t mode = curr_mode;
-    printf("%o\n", mode);
 
     #define true 1
     #define false 0
@@ -275,18 +274,18 @@ int main(int argc, char **argv){
         // === Command : help ===
         else if (strcmp(tok_str, "help") == 0) {
             printf("\t\t\t\t======= Help =======\n");
-            printf("\t\t\t\t quit : Quit program\n");
-            printf("\t\t\t\t help : Show a list of commands.\n");
-            printf("\t\t\t\t cd : Change the directory -> cd <directory>\n");
-            printf("\t\t\t\t mkdir : Creates a directory -> mkdir <directory>\n");
-            printf("\t\t\t\t rmdir : Remove the directory -> rmdir <directory>\n");
-            printf("\t\t\t\t rename : Rename the source directory -> rename <source> <target>\n");
-            printf("\t\t\t\t ls : Shows the contents of the current directory.\n");
-            printf("\t\t\t\t ln : Create a link file -> ln [-s] <source> <target>\n");
-            printf("\t\t\t\t rm : Remove the file -> rm <file>\n");
-            printf("\t\t\t\t chmod : Change the file permission -> chmod <permission> <file>\n");
-            printf("\t\t\t\t cat : Show the contents of the file -> cat <file>\n");
-            printf("\t\t\t\t cp : Copy the file -> cp <source> <target>\n");
+            printf("\t\t\t quit : Quit program\n");
+            printf("\t\t\t help : Show a list of commands.\n");
+            printf("\t\t\t cd : Change the directory -> cd <directory>\n");
+            printf("\t\t\t mkdir : Creates a directory -> mkdir <directory>\n");
+            printf("\t\t\t rmdir : Remove the directory -> rmdir <directory>\n");
+            printf("\t\t\t rename : Rename the source directory -> rename <source> <target>\n");
+            printf("\t\t\t ls : Shows the contents of the current directory.\n");
+            printf("\t\t\t ln : Create a link file -> ln [-s] <source> <target>\n");
+            printf("\t\t\t rm : Remove the file -> rm <file>\n");
+            printf("\t\t\t chmod : Change the file permission -> chmod <permission> <file>\n");
+            printf("\t\t\t cat : Show the contents of the file -> cat <file>\n");
+            printf("\t\t\t cp : Copy the file -> cp <source> <target>\n");
         }
         // === Command : cd ===
         else if (strcmp(tok_str, "cd") == 0) {
@@ -347,7 +346,7 @@ int main(int argc, char **argv){
             char *relative_path = path;
             char *folder_name;
 
-            if (!last_slash) {
+            if (last_slash) {
                 *last_slash = '\0';
                 relative_path = path;
                 folder_name = last_slash + 1;
@@ -397,7 +396,7 @@ int main(int argc, char **argv){
             char *relative_path = path;
             char *folder_name;
 
-            if (!last_slash) {
+            if (last_slash) {
                 *last_slash = '\0';
                 relative_path = path;
                 folder_name = last_slash + 1;
@@ -511,7 +510,7 @@ int main(int argc, char **argv){
             char *relative_path = path;
             char *name;
 
-            if (!last_slash) {
+            if (last_slash) {
                 *last_slash = '\0';
                 relative_path = path;
                 name = last_slash + 1;
@@ -571,7 +570,7 @@ int main(int argc, char **argv){
             char *relative_path = path;
             char *file_name;
 
-            if (!last_slash) {
+            if (last_slash) {
                 *last_slash = '\0';
                 relative_path = path;
                 file_name = last_slash + 1;
@@ -684,7 +683,7 @@ int main(int argc, char **argv){
             char *target_path = path;
             char *filename;
 
-            if (!last_slash) {
+            if (last_slash) {
                 *last_slash = '\0';
                 target_path = path;
                 filename = last_slash + 1;
