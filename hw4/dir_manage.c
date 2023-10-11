@@ -13,7 +13,7 @@
 #include <stdbool.h>
 #include <ctype.h>
 
-#define MAX_CMD_SIZE (128)
+#define MAX_CMD_SIZE (128) 
 
 // === 상대경로를 절대경로로 변환해주는 함수 ===
 static char *convertToAbsolutePath(char *relative_path) {
