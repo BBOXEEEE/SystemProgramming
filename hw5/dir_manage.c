@@ -335,6 +335,11 @@ int main(int argc, char **argv){
             printf("\t\t\t chmod : Change the file permission -> chmod <permission> <file>\n");
             printf("\t\t\t cat : Show the contents of the file -> cat <file>\n");
             printf("\t\t\t cp : Copy the file -> cp <source> <target>\n");
+            printf("\t\t\t ps : Show the process list -> ps\n");
+            printf("\t\t\t env : Show the environment variable list -> env\n");
+            printf("\t\t\t echo : Show the string or environment variable -> echo <string> or echo $<variable>\n");
+            printf("\t\t\t <variable>=<value> : Export the environment variable -> export <variable>=<value>\n");
+            printf("\t\t\t unset : Unset the environment variable -> unset <variable>\n");
         }
         // === Command : cd ===
         else if (strcmp(tok_str, "cd") == 0) {
@@ -865,6 +870,7 @@ int main(int argc, char **argv){
                 printf("%s\n", token);
             }
         }
+        // === Command : unser ===
         else if (strcmp(tok_str, "unset") == 0) {
             char *env_name = strtok(NULL, " \n");
             if (unsetenv(env_name) == 0) {
