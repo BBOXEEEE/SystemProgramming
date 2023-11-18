@@ -353,6 +353,7 @@ int main(int argc, char **argv){
             printf("\t\t\t echo : Show the string or environment variable -> echo <string> or echo $<variable>\n");
             printf("\t\t\t <variable>=<value> : Export the environment variable -> export <variable>=<value>\n");
             printf("\t\t\t unset : Unset the environment variable -> unset <variable>\n");
+            printf("\t\t\t kill : Send a signal to the process -> kill <signal> <pid>\n");
         }
         // === Command : cd ===
         else if (strcmp(tok_str, "cd") == 0) {
